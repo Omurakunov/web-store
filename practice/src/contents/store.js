@@ -16,8 +16,8 @@ const Store = () => {
   useEffect(()=>{
     axios.get('https://fakestoreapi.com/products/categories').then(res=>{setCategories(res.data)})
   },[])
-  console.log(categories[1])
   const [searchString, setSearchString] = useState('')
+  const [searchCategory, setSearchCategory] = useState([])
   return ( 
     <div className='store'>
       <div className='store-nav'>
@@ -28,11 +28,33 @@ const Store = () => {
       </div>
       <div className='store-catalog'>
         <div className='filter-sidebar'>
+          <div className='price-filter'>
+            <div>
+              <p>От:</p>
+              <input type="number" className='min'></input>
+            </div>
+            <div>
+              <p>До:</p>
+              <input type="number" className='max'></input>
+            </div>
+          </div>
           <div className='category-filter'>
             
             {
             categories.map((category, index)=>(
               <div className='category-block' key={index}>
+                <button value={category} onClick={(e)=>{
+                  if(searchCategory.includes(e.target.value)){
+                    setSearchCategory([...searchCategory])
+                  }else{
+                    setSearchCategory([...searchCategory,{
+                      id:searchCategory.length,
+                      value:e.target.value
+                    }])
+                  }
+                  
+                  console.log(searchCategory)
+                }}>+</button>
                 <p>{category}</p>
               </div>
             ))

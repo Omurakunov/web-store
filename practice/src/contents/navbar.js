@@ -4,7 +4,7 @@ import Messenger from "../icons/messenger.svg";
 const Navbar = () => {
   return (  
     <div className="navbar_box">
-    <div className="navbar">
+    
       <div className="nav-list">
         <ul>
         <li><a href="main">Home</a></li>
@@ -21,7 +21,7 @@ const Navbar = () => {
         <a href="a"><img src={Facebook} alt="sd"></img></a>
         <a href="a"><img src={Messenger} alt="sd"></img></a>
       </div>
-    </div>
+   
     </div>
   );
 }
