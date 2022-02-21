@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import search from '../icons/search.svg'
-
+import Navbar from './navbar'
 const Store = () => {
  const [products, setProducts] = useState([])
   useEffect(()=>{
@@ -18,13 +18,40 @@ const Store = () => {
   },[])
   const [searchString, setSearchString] = useState('')
   const [searchCategory, setSearchCategory] = useState([])
+  let searchFilter = () =>{
+    if(searchString !== ''){
+        setProducts(
+            [...products].filter(p => p.title.toLowerCase().includes(searchString.toLowerCase()) || p.category.toLowerCase().includes(searchString.toLowerCase()))
+        );
+    } else {
+        setProducts(products)
+    }
+}
+  let categoryFilter = () =>{
+    setProducts(products.filter((product) => {
+      if (searchCategory === []) {
+         return product 
+      }else if(searchCategory.includes(product.category)){
+        return product
+      }
+    }))
+  }
+  let submit = (e) =>{
+    e.preventDefault()
+    searchFilter()
+  }
+  let handleInputChange = (e) =>{
+    setSearchString(e.target.value)
+  }
   return ( 
+    <>
+  <Navbar/>
     <div className='store'>
       <div className='store-nav'>
         <button className='search-butt'><img src={search} alt=''></img></button>
-        <input className='search-box' type='search' placeholder='Search...' onChange={(e)=>{
-          setSearchString(e.target.value)
-        }}></input>
+        <form onSubmit={submit}>
+        <input className='search-box' type='search' placeholder='Search...' value={searchString} onChange={handleInputChange}></input>
+        </form>
       </div>
       <div className='store-catalog'>
         <div className='filter-sidebar'>
@@ -52,8 +79,7 @@ const Store = () => {
                       value:e.target.value
                     }])
                   }
-                  
-                  console.log(searchCategory)
+                  categoryFilter()
                 }}>+</button>
                 <p>{category}</p>
               </div>
@@ -62,13 +88,7 @@ const Store = () => {
           </div>
         </div>
         <div className="products">
-          {products.filter((product) => {
-            if (searchString === ""){
-              return product
-            }else if(product.title.toLowerCase().includes(searchString.toLowerCase()) || product.category.toLowerCase().includes(searchString.toLowerCase())){
-              return product
-            }
-          }).map((product) => (
+          {products.map((product) => (
           <div className="product-card" key={product.id}>
             <div className="product-card-img">
               <a href="a"><img src={product.image} alt=""></img></a>
@@ -81,6 +101,7 @@ const Store = () => {
         </div>
       </div>
     </div>
+    </>
    );
 }
  

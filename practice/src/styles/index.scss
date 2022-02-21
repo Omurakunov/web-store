@@ -135,6 +135,7 @@ body{
 span{
   color: $firstColor;
 }
+
 #scrin_1{
   animation: MoveUpDown 4s linear infinite;
 }
@@ -259,6 +260,7 @@ span{
   flex-direction: column;
   width: 100%; 
   height: auto;
+  padding: 10vh;
 }
 .store-nav{
   width: 100%;

@@ -1,8 +1,9 @@
 import Anime from './anime'
 import Background from '../icons/Vector.svg'
-const Slider = () => {
+import Navbar from './navbar';
+const Home = () => {
   return ( 
-    
+    <><Navbar/>
     <div className='intro'>
       <img src={Background} alt='' className='bc'></img>
       <div className='animation'>
@@ -15,8 +16,8 @@ const Slider = () => {
         </div>
       </div>
     </div>
-     
+    </>
    );
 }
  
-export default Slider;  
+export default Home;  
