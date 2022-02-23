@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import App from './contents/App';
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 import Home from "./contents/homepage"
 import Store from "./contents/store"
