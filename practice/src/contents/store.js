@@ -48,45 +48,19 @@ const Store = () => {
   <Navbar/>
     <div className='store'>
       <div className='store-nav'>
-        <button className='search-butt'><img src={search} alt=''></img></button>
-        <form onSubmit={submit}>
-        <input className='search-box' type='search' placeholder='Search...' value={searchString} onChange={handleInputChange}></input>
+      <form onSubmit={submit}>
+          <button className='search-butt'><img src={search} alt=''></img></button>
+          <input className='search-box' type='search' placeholder='Search...' value={searchString} onChange={handleInputChange}></input>
         </form>
-      </div>
-      <div className='store-catalog'>
-        <div className='filter-sidebar'>
-          <div className='price-filter'>
-            <div>
-              <p>От:</p>
-              <input type="number" className='min'></input>
-            </div>
-            <div>
-              <p>До:</p>
-              <input type="number" className='max'></input>
-            </div>
-          </div>
-          <div className='category-filter'>
-            
+        <div className='category-filter'>
             {
             categories.map((category, index)=>(
-              <div className='category-block' key={index}>
-                <button value={category} onClick={(e)=>{
-                  if(searchCategory.includes(e.target.value)){
-                    setSearchCategory([...searchCategory])
-                  }else{
-                    setSearchCategory([...searchCategory,{
-                      id:searchCategory.length,
-                      value:e.target.value
-                    }])
-                  }
-                  categoryFilter()
-                }}>+</button>
-                <p>{category}</p>
-              </div>
+              <button>{category.toUpperCase()}</button>              
             ))
             }
           </div>
         </div>
+      <div className='store-catalog'>
         <div className="products">
           {products.map((product) => (
           <div className="product-card" key={product.id}>
