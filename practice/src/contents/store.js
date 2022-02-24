@@ -5,11 +5,13 @@ import search from '../icons/search.svg'
 import Navbar from './navbar'
 const Store = () => {
  const [products, setProducts] = useState([])
+ const [allProducts, setAllProducts] = useState([])
   useEffect(()=>{
     axios
     .get('https://fakestoreapi.com/products')
     .then(res=>{
       setProducts(res.data)
+      setAllProducts(res.data)
     })
   },[])
   const [categories, setCategories] = useState([])
@@ -24,17 +26,15 @@ const Store = () => {
             [...products].filter(p => p.title.toLowerCase().includes(searchString.toLowerCase()) || p.category.toLowerCase().includes(searchString.toLowerCase()))
         );
     } else {
-        setProducts(products)
+        setProducts(allProducts)
     }
 }
   let categoryFilter = () =>{
-    setProducts(products.filter((product) => {
-      if (searchCategory === []) {
-         return product 
-      }else if(searchCategory.includes(product.category)){
-        return product
-      }
-    }))
+    if(searchCategory !== ""){
+      setProducts(allProducts.filter(p => p.category.toLowerCase() === searchCategory.toLowerCase()))
+    }else{
+      setProducts(allProducts)
+    }
   }
   let submit = (e) =>{
     e.preventDefault()
@@ -42,6 +42,10 @@ const Store = () => {
   }
   let handleInputChange = (e) =>{
     setSearchString(e.target.value)
+  }
+  let handleCategoryChange = (e) => { 
+    setSearchCategory(e.target.value)
+    categoryFilter()
   }
   return ( 
     <>
@@ -55,7 +59,7 @@ const Store = () => {
         <div className='category-filter'>
             {
             categories.map((category, index)=>(
-              <button>{category.toUpperCase()}</button>              
+              <button value={category} onClick={handleCategoryChange}>{category.toUpperCase()}</button>              
             ))
             }
           </div>

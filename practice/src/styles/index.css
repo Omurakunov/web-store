@@ -406,5 +406,6 @@ body {
     grid-template-columns: repeat(3, 33%);
     justify-content: space-evenly;
     grid-auto-rows: 350px;
+    overflow: hidden;
   }
 }/*# sourceMappingURL=index.css.map */
