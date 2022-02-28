@@ -19,7 +19,7 @@ const Store = () => {
     axios.get('https://fakestoreapi.com/products/categories').then(res=>{setCategories(res.data)})
   },[])
   const [searchString, setSearchString] = useState('')
-  const [searchCategory, setSearchCategory] = useState([])
+  const [searchCategory, setSearchCategory] = useState('')
   let searchFilter = () =>{
     if(searchString !== ''){
         setProducts(
@@ -31,7 +31,7 @@ const Store = () => {
 }
   let categoryFilter = () =>{
     if(searchCategory !== ""){
-      setProducts(allProducts.filter(p => p.category.toLowerCase() === searchCategory.toLowerCase()))
+      setProducts(allProducts.filter(p => p.category === searchCategory))
     }else{
       setProducts(allProducts)
     }
@@ -44,8 +44,10 @@ const Store = () => {
     setSearchString(e.target.value)
   }
   let handleCategoryChange = (e) => { 
+    console.log(e.target.value)
     setSearchCategory(e.target.value)
     categoryFilter()
+    console.log(searchCategory)
   }
   return ( 
     <>
@@ -59,9 +61,10 @@ const Store = () => {
         <div className='category-filter'>
             {
             categories.map((category, index)=>(
-              <button value={category} onClick={handleCategoryChange}>{category.toUpperCase()}</button>              
+              <button value={category} onClick={handleCategoryChange} key={index}>{category.toUpperCase() }</button>              
             ))
             }
+            <button onClick={()=> setCategories("")}>ALL PRODUCTS</button>
           </div>
         </div>
       <div className='store-catalog'>
