@@ -124,7 +124,7 @@ body{
   gap: 4rem;
 }
 .intro{
-  width: 30%;
+  width: 35em;
   height: 800px;
   min-height: 700px;
   box-shadow: 0px 10px 43px -9px rgba(34, 60, 60, 0.70);
@@ -175,7 +175,7 @@ body{
   transform: scale(1.25);
   
 }
-@media(max-width: 40em) {
+@media(max-width: 55em) {
   .home{
     gap: 100px;
   }
@@ -185,7 +185,7 @@ body{
   }
   .intro{
     height: 500px;
-    width: 100%;
+    width: 40em;
   }
 }
 .information{
@@ -211,7 +211,7 @@ body{
 }
 
 .products{
-  width: 50em;
+  width: 60em;
   min-height: 50vh;
   display: grid;
   grid-template-columns:repeat(4,25%);
@@ -347,13 +347,13 @@ body{
   bottom: 0;
   left: 0;
   transform: scaleX(0);
-  transform-origin: right;
+  transform-origin: center;
   transition: transform 400ms ease-in;
   transition-delay: 200ms;
  }
  button:hover::after{
    transform: scaleX(1);
-   transform-origin: left;
+   transform-origin: center;
    transition-delay: 0ms;
  }
 }
@@ -389,7 +389,7 @@ body{
     width: 100vw;
     height: auto;
     display: grid;
-    grid-template-columns:repeat(3,33%);
+    grid-template-columns:repeat(2,10em);
     justify-content: space-evenly;
     grid-auto-rows: 350px;
     overflow: hidden;
