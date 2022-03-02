@@ -3,9 +3,9 @@ import Inst from "../icons/instagram.svg";
 import Facebook from "../icons/facebook.svg";
 import Messenger from "../icons/messenger.svg";
 const Navbar = () => {
-  return (  
+  return (
     <div className="navbar">
-    
+
       <div className="nav-list">
         <ul>
         <li><a href="/">Home</a></li>
@@ -15,7 +15,7 @@ const Navbar = () => {
       </div>
       <div className="logo">
         <h1><a href="/">NURAYIM</a></h1>
-        
+
       </div>
       <div className="links">
         <a href="a"><img src={Inst} alt="sd"></img></a>
@@ -26,5 +26,5 @@ const Navbar = () => {
     </div>
   );
 }
- 
-export default Navbar;                              
+
+export default Navbar;

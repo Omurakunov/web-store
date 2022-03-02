@@ -9,12 +9,14 @@ import {
 } from "react-router-dom";
 import Home from "./contents/homepage"
 import Store from "./contents/store"
+import ProductPage from "./contents/productpage"
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/store" element={<Store/>}/>
+        <Route ecaxt path="/productpage" element={<ProductPage/>}/>
       </Routes>
     </Router>
   </React.StrictMode>,
