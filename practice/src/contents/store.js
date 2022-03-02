@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import search from '../icons/search.svg'
 import Navbar from './navbar'
-const Store = () => {
+const Store = (props) => {
  const [products, setProducts] = useState([])
  const [allProducts, setAllProducts] = useState([])
   useEffect(()=>{
@@ -61,7 +61,7 @@ const Store = () => {
         <div className='category-filter'>
             {
             categories.map((category, index)=>(
-              <button value={category} onClick={handleCategoryChange} key={index}>{category.toUpperCase() }</button>              
+              <button value={category} onClick={handleCategoryChange} key={index}>{category.toUpperCase() }</button>
             ))
             }
             <button onClick={()=> setCategories("")}>ALL PRODUCTS</button>
@@ -70,20 +70,21 @@ const Store = () => {
       <div className='store-catalog'>
         <div className="products">
           {products.map((product) => (
-          <div className="product-card" key={product.id}>
-            <div className="product-card-img">
-              <a href="a"><img src={product.image} alt=""></img></a>
-            </div>
-            <div className="product-card-text">
-              <a href="s">{product.title}</a>
-              <p className="price">{product.price}$</p>
-            </div>
-          </div>))}
+            <a href="/productPage">
+              <div className="product-card" key={product.id} >
+                <div className="product-card-img">
+                <a href="a"><img src={product.image} alt=""></img></a>
+              </div>
+                <div className="product-card-text">
+                  <a href="s">{product.title}</a>
+                  <p className="price">{product.price}$</p>
+                </div>
+          </div></a>))}
         </div>
       </div>
     </div>
     </>
    );
 }
- 
-export default Store;       
+
+export default Store;
