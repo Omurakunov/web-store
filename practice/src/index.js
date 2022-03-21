@@ -16,7 +16,7 @@ ReactDOM.render(
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/store" element={<Store/>}/>
-        <Route ecaxt path="/productpage" element={<ProductPage/>}/>
+        <Route ecaxt path="/store/:id" element={<ProductPage/>}/>
       </Routes>
     </Router>
   </React.StrictMode>,

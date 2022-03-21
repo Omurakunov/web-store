@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import search from '../icons/search.svg'
 import Navbar from './navbar'
+import { Link } from 'react-router-dom'
 const Store = (props) => {
  const [products, setProducts] = useState([])
  const [allProducts, setAllProducts] = useState([])
@@ -29,6 +30,9 @@ const Store = (props) => {
         setProducts(allProducts)
     }
 }
+  useEffect(()=>{
+    categoryFilter()
+  },[searchCategory])
   let categoryFilter = () =>{
     if(searchCategory !== ""){
       setProducts(allProducts.filter(p => p.category === searchCategory))
@@ -46,7 +50,6 @@ const Store = (props) => {
   let handleCategoryChange = (e) => { 
     console.log(e.target.value)
     setSearchCategory(e.target.value)
-    categoryFilter()
     console.log(searchCategory)
   }
   return ( 
@@ -61,25 +64,25 @@ const Store = (props) => {
         <div className='category-filter'>
             {
             categories.map((category, index)=>(
-              <button value={category} onClick={handleCategoryChange} key={index}>{category.toUpperCase() }</button>
+              <button value={category} onClick={handleCategoryChange} key={index}>{category.toUpperCase()}</button>
             ))
             }
-            <button onClick={()=> setCategories("")}>ALL PRODUCTS</button>
+            <button onClick={()=> setSearchCategory('')}>ALL PRODUCTS</button>
           </div>
         </div>
       <div className='store-catalog'>
         <div className="products">
           {products.map((product) => (
-            <a href="/productPage">
+            <Link to={`/store/${product.id}`}>
               <div className="product-card" key={product.id} >
                 <div className="product-card-img">
-                <a href="a"><img src={product.image} alt=""></img></a>
+                <img src={product.image} alt=""/>
               </div>
                 <div className="product-card-text">
-                  <a href="s">{product.title}</a>
+                  <p href="s">{product.title}</p>
                   <p className="price">{product.price}$</p>
                 </div>
-          </div></a>))}
+          </div></Link>))}
         </div>
       </div>
     </div>
