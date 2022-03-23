@@ -79,7 +79,7 @@ const Store = (props) => {
                 <img src={product.image} alt=""/>
               </div>
                 <div className="product-card-text">
-                  <p href="s">{product.title}</p>
+                  <p className='title'>{product.title}</p>
                   <p className="price">{product.price}$</p>
                 </div>
           </div></Link>))}
