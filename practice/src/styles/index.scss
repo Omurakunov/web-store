@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 $firstColor: black;
-$secondColor: rgb(136, 176, 75);
+$secondColor: rgb(106, 142, 53);
 $border: 1px solid rgba(0, 0, 0, 0.1);
 $borderNone: none;
 :root{
@@ -32,7 +33,7 @@ a{
 body{
   width: 100%;
   height: auto;
-  padding-top: 10em;
+  padding-top: 90px;
 }
 .navbar{
   display: flex;
@@ -114,6 +115,7 @@ body{
   display: flex;
   flex-direction: column;
   gap:50px;
+  margin-top: 80px;
 }
 .category-home{
   min-height: 100vh;
@@ -308,7 +310,7 @@ body{
   justify-content: center;
   padding: 5px;
   
-  a{
+    .title{
     color: $firstColor;
     text-align: center;
     white-space: nowrap;
@@ -325,6 +327,7 @@ body{
 }
 
 .store{
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   width: 100%; 
@@ -437,9 +440,54 @@ body{
     width: 100vw;
     height: auto;
     display: grid;
-    grid-template-columns:repeat(3,15em);
-    justify-content: space-evenly;
+    grid-template-columns:repeat(3,15em); 
     grid-auto-rows: 350px;
     overflow: hidden;
+  }
+}
+.product-page{
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  img{
+    width: 300px;
+  }
+}
+.product-img{
+  display: flex;
+  width: 25em;
+  height: 25em;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+}
+.product-information-bc{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+.product-information{
+  display: flex;
+  flex-direction: column;
+  text-justify:  center;
+  padding-left: 30px;
+  gap: 20px;
+  
+  h1{
+    font-size: var(--fs-700);
+    color: black;
+  
+  }
+  h3{
+    font-size: var(--fs-mp);
+    color: $secondColor;
+  }
+  p{
+    font-size: var(--fs-400);
+    color: black;
+    
   }
 }
