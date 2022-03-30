@@ -17,13 +17,10 @@ const ProductPage = () => {
             <div className="product-img">
                 <img src={productData.image} alt="d"/>    
             </div>
-            <div className="product-information-bc">
             <div className="product-information">
                 <h1>{productData.title}</h1>
                 <h3>{productData.price}$</h3>
                 <p>{productData.description}</p>    
-                
-            </div>
             </div>
         </div>
         </>

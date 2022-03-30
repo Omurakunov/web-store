@@ -4,9 +4,13 @@ import Turkey from '../icons/fromTurkey.svg'
 import Price from '../icons/cheap.svg'
 import Quality from '../icons/quality.svg'
 import { useState, useEffect} from 'react'
+import{ Swiper, SwiperSlide} from 'swiper/react'
+import { Navigation, Pagination, Autoplay, EffectCube } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-const Home = () => {
- 
+const Home = () =>{
   return ( 
     <><Navbar/>
     
@@ -19,33 +23,37 @@ const Home = () => {
         <a href="/store"><div className="kids-category"><p>KID</p></div></a>
       </div>
       </div>
-      
-      <div className='information'>
-        <div className='btns'>
-        <input type='checkbox' id='btn1'></input>
-        <input type='checkbox' id='btn3'></input>
-        <input type='checkbox' id='btn4'></input>
-        <input type='checkbox' id='btn2'></input>
-        </div>
-        
+      <Swiper
+          modules={[Navigation, Pagination, Autoplay, EffectCube]}
+          effect='flip'
+          navigation
+          pagination={{clickable: true}}
+          spaceBetween={50}
+          slidesPerView={1}
+          autoplay={{delay: 2000}}
+          loop={true}
+          
+        >
+          <SwiperSlide>
+            <img src={Delivery} alt='slide'></img>
+            <p>Free delivery to any point in Bishkek</p>
+            </SwiperSlide>
+          <SwiperSlide>
+            <img src={Price} alt='slide'></img>
+            <p>Free delivery to any point in Bishkek</p>
+            </SwiperSlide>
+          <SwiperSlide>
+            <img src={Turkey} alt='slide'></img>
+            <p>Free delivery to any point in Bishkek</p>
+            </SwiperSlide>
+          <SwiperSlide>
+            <img src={Quality} alt='slide'></img>
+            <p>Free delivery to any point in Bishkek</p>
+            </SwiperSlide>
+        </Swiper>
 
-        <div className='info-block'>
-          <img src={Delivery} alt='' className='first'></img>
-          <p>Free delivery to any point in Bishkek</p>
-        </div>
-        <div className='info-block'>
-          <img src={Price} alt='' className='second'></img>
-          <p>Best prices ever</p>
-        </div>
-        <div className='info-block' >
-          <img src={Turkey} alt='' className='third'></img>
-          <p>Clothes directly from Turkey</p>
-        </div>
-        <div className='info-block'>
-          <img src={Quality} alt='' className='forth'></img>
-          <p>Best quality that you can ever find</p>
-        </div>
-      </div>
+        
+      
     </div>
     </>
    );
